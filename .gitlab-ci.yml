@@ -1,0 +1,16 @@
+stages: [test]
+
+test:
+  stage: test
+  image: node:22
+  script:
+    - npm ci
+    - npm test
+
+secret_detection:
+  stage: test
+  image:
+    name: zricethezav/gitleaks:latest
+    entrypoint: [""]
+  script:
+    - gitleaks dir . --no-banner --redact

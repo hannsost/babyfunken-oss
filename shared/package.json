@@ -1,0 +1,17 @@
+{
+  "name": "@babyfunken/shared",
+  "version": "2.0.0",
+  "description": "Signaling protocol and constants shared by every Babyfunken client and the server.",
+  "type": "module",
+  "main": "index.js",
+  "exports": {
+    ".": "./index.js",
+    "./protocol": "./protocol.js",
+    "./constants": "./constants.js"
+  },
+  "files": ["index.js", "protocol.js", "constants.js"],
+  "license": "MIT",
+  "scripts": {
+    "test": "node --test test/*.js"
+  }
+}

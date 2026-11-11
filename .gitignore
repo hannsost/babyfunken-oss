@@ -1,0 +1,54 @@
+node_modules/
+dist/
+build/
+
+# Expo / React Native
+.expo/
+*.log
+.metro-health-check*
+
+# Generated native projects (CNG — see mobile/app.config.js).
+# These patterns are anchored to this directory, so the native source of
+# the local Expo module under mobile/modules/ stays tracked. `expo-doctor`
+# reports this as an over-broad rule; that is a false positive, and
+# `git check-ignore mobile/modules/foreground-service/android/build.gradle`
+# shows the file is not ignored.
+mobile/android/
+mobile/ios/
+
+# Secrets. Never commit any of these.
+.env
+.env.*
+!.env.example
+secrets/
+*.keystore
+*.jks
+*.p8
+*.p12
+*.pem
+*.mobileprovision
+google-services.json
+play-service-account*.json
+
+# OS
+.DS_Store
+
+# --- secrets & local env (added for OSS release) ---
+!**/.env.example
+*.key
+*.pfx
+kubeconfig*
+*.kubeconfig
+*.sqlite
+*.sqlite3
+*.db
+*.dump
+# --- build output ---
+android/
+ios/
+*.apk
+*.aab
+# --- editors / OS ---
+.idea/
+.vscode/
+*.swp

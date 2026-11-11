@@ -1,0 +1,22 @@
+# Keep the build context small and never ship host artefacts into a layer.
+node_modules
+**/node_modules
+**/dist
+**/build
+
+mobile/android
+mobile/ios
+mobile/.expo
+
+.git
+.github
+docs
+store
+scripts
+
+**/.env
+**/.env.*
+!**/.env.example
+secrets
+*.keystore
+*.jks

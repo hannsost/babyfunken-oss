@@ -1,0 +1,26 @@
+{
+  "name": "@babyfunken/server",
+  "version": "2.0.0",
+  "description": "Babyfunken signaling server \u2014 relays WebRTC handshakes and alerts. Never sees media.",
+  "type": "module",
+  "main": "index.js",
+  "engines": {
+    "node": ">=20"
+  },
+  "scripts": {
+    "start": "node index.js",
+    "dev": "node --watch index.js",
+    "test": "node --test test/*.js",
+    "test:watch": "node --test --watch test/"
+  },
+  "license": "MIT",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "express": "^5.1.0",
+    "socket.io": "^4.8.1",
+    "@babyfunken/shared": "*"
+  },
+  "devDependencies": {
+    "socket.io-client": "^4.8.1"
+  }
+}

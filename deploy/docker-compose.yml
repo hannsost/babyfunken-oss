@@ -1,0 +1,41 @@
+# Babyfunken production stack.
+#
+# Two processes: the signaling server (tiny — it relays handshakes) and
+# coturn (relays media only for the minority of connections that cannot
+# go peer-to-peer). Neither ever stores a frame of video.
+
+name: babyfunken
+
+services:
+  signaling:
+    build:
+      context: ..
+      dockerfile: deploy/Dockerfile
+    image: babyfunken/signaling:latest
+    restart: unless-stopped
+    env_file: [../server/.env]
+    ports:
+      - "127.0.0.1:8002:8002"     # put a TLS terminating proxy in front
+    deploy:
+      resources:
+        limits:
+          # Signaling is a few hundred bytes per session. This is generous.
+          memory: 256M
+          cpus: "0.5"
+    logging:
+      driver: json-file
+      options: { max-size: "10m", max-file: "3" }
+
+  coturn:
+    image: coturn/coturn:4.6-alpine
+    restart: unless-stopped
+    # Host networking: coturn hands out its own relay addresses, and NAT
+    # inside a bridge network makes those addresses wrong.
+    network_mode: host
+    volumes:
+      - ./turnserver.conf:/etc/coturn/turnserver.conf:ro
+      - ${TURN_CERT_DIR:-/etc/letsencrypt/live/turn.example.org}:/certs:ro
+    command: ["-c", "/etc/coturn/turnserver.conf"]
+    logging:
+      driver: json-file
+      options: { max-size: "10m", max-file: "3" }

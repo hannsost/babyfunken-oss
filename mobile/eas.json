@@ -1,0 +1,56 @@
+{
+  "cli": {
+    "version": ">= 18.0.0",
+    "appVersionSource": "remote",
+    "requireCommit": true
+  },
+  "build": {
+    "base": {
+      "node": "20.19.4",
+      "android": {
+        "resourceClass": "medium"
+      }
+    },
+    "development": {
+      "extends": "base",
+      "developmentClient": true,
+      "distribution": "internal",
+      "channel": "development",
+      "android": { "buildType": "apk" },
+      "env": {
+        "BABYFUNKEN_SERVER_URL": "https://signal-staging.babyfunken.de"
+      }
+    },
+    "preview": {
+      "extends": "base",
+      "distribution": "internal",
+      "channel": "preview",
+      "android": { "buildType": "apk" },
+      "env": {
+        "BABYFUNKEN_SERVER_URL": "https://signal-staging.babyfunken.de"
+      }
+    },
+    "production": {
+      "extends": "base",
+      "distribution": "store",
+      "channel": "production",
+      "autoIncrement": true,
+      "android": { "buildType": "app-bundle" },
+      "env": {
+        "BABYFUNKEN_SERVER_URL": "https://signal.babyfunken.de",
+        "BABYFUNKEN_PRIVACY_URL": "https://babyfunken.de/datenschutz",
+        "BABYFUNKEN_SUPPORT_EMAIL": "support@babyfunken.de"
+      }
+    }
+  },
+  "submit": {
+    "production": {
+      "android": {
+        "serviceAccountKeyPath": "../secrets/play-service-account.json",
+        "track": "internal",
+        "releaseStatus": "draft",
+        "changesNotSentForReview": false
+      }
+    }
+  }
+}

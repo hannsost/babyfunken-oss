@@ -1,0 +1,29 @@
+<!--
+  Babyfunken mark: a sleeping crescent at the centre, broadcasting.
+  Drawn once here; every raster asset is generated from this file by
+  scripts/generate-assets.sh so the icon set can never drift apart.
+-->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1024 1024" width="1024" height="1024">
+  <defs>
+    <linearGradient id="wave" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#60a5fa"/>
+      <stop offset="100%" stop-color="#2563eb"/>
+    </linearGradient>
+    <mask id="crescent">
+      <rect width="1024" height="1024" fill="black"/>
+      <circle cx="512" cy="512" r="104" fill="white"/>
+      <circle cx="566" cy="466" r="92" fill="black"/>
+    </mask>
+  </defs>
+
+  <g fill="none" stroke="url(#wave)" stroke-width="46" stroke-linecap="round">
+    <path d="M 622.8 370.2 A 180.0 180.0 0 0 1 622.8 653.8" opacity="1"/>
+    <path d="M 401.2 653.8 A 180.0 180.0 0 0 1 401.2 370.2" opacity="1"/>
+    <path d="M 677.0 300.8 A 268.0 268.0 0 0 1 677.0 723.2" opacity="0.72"/>
+    <path d="M 347.0 723.2 A 268.0 268.0 0 0 1 347.0 300.8" opacity="0.72"/>
+    <path d="M 731.2 231.5 A 356.0 356.0 0 0 1 731.2 792.5" opacity="0.42"/>
+    <path d="M 292.8 792.5 A 356.0 356.0 0 0 1 292.8 231.5" opacity="0.42"/>
+  </g>
+
+  <rect width="1024" height="1024" fill="#f8fafc" mask="url(#crescent)"/>
+</svg>

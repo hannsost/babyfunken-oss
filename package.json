@@ -1,0 +1,28 @@
+{
+  "name": "babyfunken",
+  "version": "2.0.0",
+  "private": true,
+  "description": "Babyfunken \u2014 a peer-to-peer baby monitor for Android, web and desktop.",
+  "license": "MIT",
+  "workspaces": [
+    "shared",
+    "server",
+    "webapp",
+    "mobile"
+  ],
+  "engines": {
+    "node": ">=20"
+  },
+  "scripts": {
+    "test": "npm run test --workspaces --if-present",
+    "lint": "npm run lint --workspaces --if-present",
+    "server": "npm start --workspace @babyfunken/server",
+    "webapp": "npm run dev --workspace @babyfunken/webapp",
+    "mobile": "npm start --workspace @babyfunken/mobile",
+    "assets": "./scripts/generate-assets.sh && python3 scripts/generate-lullabies.py"
+  },
+  "overrides": {
+    "expo-asset": "~12.0.13",
+    "expo-constants": "~18.0.14"
+  }
+}

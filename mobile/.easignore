@@ -1,0 +1,21 @@
+# Uploaded to EAS Build: keep the payload to source and config only.
+node_modules
+android
+ios
+.expo
+dist
+/tmp
+
+# Never upload credentials.
+../secrets
+*.keystore
+*.jks
+.env
+.env.*
+
+# Not needed to build the app.
+../webapp/dist
+../webapp/node_modules
+../server/node_modules
+../docs
+../store
